@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+
+<div class="text-center text-black-600  flex flex-col justify-evenly items-center md:flex-row"> <h1 class=" block text-2xl p-2 rounded mt-1 capitalize font-serif">Our book collections ({{total}})</h1>
+  <div class="text-1xl p-2 rounded mt-1 capitalize font-serif">
+    <div class=" ">
+      <button id="menu-btn" class="text-1xl text-white p-2 px-5 rounded mt-2 capitalize font-semibold bg-green-500  hover:bg-gradient-to-t from-blue-600/50 ">Book Category</button>
+      <div id="dropdown" class=" z-10 absolute hidden flex-col  bg-white mt-1  shadow-xl w-40 duration-500">
+        <a class="mt-1 hover:bg-blue-400 hover:rounded hover:text-white duration-500" href="{%  url 'book-category' 'story' %}">Story</a>
+        <a class="mt-1 hover:bg-blue-400 hover:rounded hover:text-white duration-500" href="{%  url 'book-category' 'reader' %}">Reader</a>
+        <a class="mt-1 hover:bg-blue-400 hover:rounded hover:text-white duration-500" href="{%  url 'book-category' 'poetry' %}">Poetry</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="snap-x flex overflow-x-auto space-x space-x-7 mt-28 items-center justify-evenly md:mt-5">
+    {% for books in book %}
+  <div class="snap-none scroll-ml-7  shadow-lg shadow-cyan-500/15 w-80  flex-shrink-0 md:m-4">
+    <!-- <img class="h-60" src="{% static 'img\b4.jpeg' %}" /> -->
+    <div class="bg-slate-900 p-2 text-white font-serif">
+				<img class="ml-32" src="{% static 'img\book-removebg-preview.png' %}"  width="40px" alt="">	
+      Bookspace is one of the most leading site in Books writting.
+    </div>
+    <div class="m-2 font-serif">
+      <h1 class="text-center font-serif text-green-500">--Book Detail--</h1>
+      <hr>
+      <div class="text-red-500">Book No.<span class="text-xl">{{forloop.counter}}</span></div>
+    
+      {{books.writer_name}}
+      <br>
+      {{books.book_name}}
+      <br>
+      {{books.book_category}}
+      <br>
+      {{books.published_by}}
+      <br>
+      {{books.published_date}}
+    </div>
+    <div class="flex flex-row">
+      <button class="ml-4  text-gray-700 bg-gray-100 border-0 m-3 py-2 px-6 focus:outline-none hover:bg-green-200 rounded text-lg shadow-lg shadow-cyan-500/15"><a href="{% url 'book-detail' books.id %}"> Explore</a></button>
+      {% if perms.books %}
+      <form action="{% url 'delete' books.id %}" method="post">
+        {% csrf_token %}
+        <button type="submit" class="ml-4  text-red-500 bg-gray-100 border-0 m-3 py-2 px-6 focus:outline-none hover:bg-red-200 rounded text-lg shadow-lg shadow-cyan-500/15"> Delete</button>
+      </form>
+      {% else %}
+      {% endif %}
+      </div>
+  </div>
+
+  <!-- <div class="snap-center scroll-ml-7  shadow-lg shadow-cyan-500/15 w-80  flex-shrink-0">
+    <img src="https://images.unsplash.com/photo-1540206351-d6465b3ac5c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=321&h=160&q=80" />
+  </div>
+  <div class="snap-center scroll-ml-7  shadow-lg shadow-cyan-500/15 w-80  flex-shrink-0">
+    <img src="https://images.unsplash.com/photo-1622890806166-111d7f6c7c97?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" />
+  </div>
+  <div class="snap-center scroll-ml-7  shadow-lg shadow-cyan-500/15 w-80  flex-shrink-0">
+    <img src="https://images.unsplash.com/photo-1590523277543-a94d2e4eb00b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" />
+  </div>
+  <div class="snap-center scroll-ml-7  shadow-lg shadow-cyan-500/15 w-80  flex-shrink-0">
+    <img src="https://images.unsplash.com/photo-1575424909138-46b05e5919ec?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" />
+  </div>
+  <div class="snap-center scroll-ml-7  shadow-lg shadow-cyan-500/15 w-80  flex-shrink-0">
+    <img src="https://images.unsplash.com/photo-1559333086-b0a56225a93c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=320&h=160&q=80" />
+  </div> -->
+  {% endfor %}
+</div>
+
+{% endblock content %}

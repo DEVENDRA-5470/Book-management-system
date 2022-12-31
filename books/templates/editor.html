@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Editor {% endblock title %}
+
+{% block content %}
+<section class="text-gray-400 bg-gray-900 body-font">
+    <div class="container px-5 py-24 mx-auto flex flex-wrap items-center">
+      <div class=" md:w-1/2 md:pr-16 lg:pr-0 pr-0">
+        <h1 class="title-font font-medium text-3xl text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit.</h1>
+        <p class="leading-relaxed mt-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt, modi culpa! Saepe odit officiis minima, incidunt architecto deleniti ea mollitia modi culpa! Saepe odit officiis minima, incidunt architecto deleniti ea mollitia.</p>
+      </div>
+      <div class=" md:w-1/3 bg-gray-800 bg-opacity-50 rounded-lg p-10 flex flex-col md:ml-auto w-full mt-10 md:mt-0 shadow-lg shadow-cyan-500/15">
+        <h2 class="text-white text-lg font-medium title-font mb-1 ">Become an Editor</h2>
+        <!-- <hr class="bg-red-500"> -->
+        <div class=" mb-2">
+                <form action="" method="post" novalidate>
+                    {% csrf_token %}
+                    
+                    <p class="pt-2"><label for="full-name" class="leading-7 text-sl  text-white"> {{form.username.label}}:</label></p>
+                    {{form.username}} 
+      
+                    <p><label for="full-name" class="leading-7 text-sl   text-white">{{form.email.label}}:</label></p>
+                    {{form.email}} 
+                
+                    <p><label for="full-name" class="leading-7 text-sl  text-white">{{form.password1.label}}:</label></p>
+                    {{form.password1}} 
+                
+                    <p><label for="full-name" class="leading-7 text-sl  text-white">{{form.password2.label}}:</label></p>
+                    {{form.password2}} 
+                    <br>
+            </div>
+            <button class="text-white font-[poppins] w-90 bg-blue-500 border-0 py-2 px-8 focus:outline-none hover:bg-blue-800 rounded text-lg" type="submit">Sign Up</button>
+          </form>
+          <p class="text-xs mt-3 text-red-600 underline"> <a class="text-red-600 " href="{% url 'login' %}">Existing User Login</a></p>
+          <p class="text-xs mt-3">Literally you probably haven't heard of them jean shorts.</p>
+        </div>
+      </div>
+  </section>
+{% endblock content %}

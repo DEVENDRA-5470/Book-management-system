@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} write a book {% endblock title %}
+
+{% block content %}
+<div class="p-4 bg-gradient-to-t via-slate-300 from-neutral-100/50">
+<form class="md:w-full  " method="post">
+  {% csrf_token %} 
+  <button class="bg-red-500  text-white font-bold py-2 px-4  rounded focus:outline-none focus:shadow-outline" >
+    <a href="{% url 'editor' %}">Become an Editor</a>
+  </button>
+    <div class=" flex flex-col justify-center pt-2 md:flex-row   md:items-center  ">
+
+      <!-- add book witer name -->
+      <div class=" md:w-full  mb-6 md:mb-0 ">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+          {{form.writer_name.label}}.
+        </label>
+        {{form.writer_name}}
+      </div>
+
+      <!-- add book name -->
+      <div class=" md:w-full md:ml-5  mb-6 md:mb-0 ">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+          {{form.book_name.label}}.
+        </label>
+        {{form.book_name}}
+      </div>
+    </div>
+
+      <!-- select category -->
+      <div class="flex flex-wrap -mx-3 mb-3  md:p-2">
+        <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+          <div class="md:full">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+              {{form.book_category.label}}:
+            </label>
+            <select name="book_category" required id="id_book_category">
+              <option value="" selected>Book Type</option>
+            
+              <option value="READER">READER</option>
+            
+              <option value="STORY">STORY</option>
+            
+              <option value="POETRY">POETRY</option>
+            
+            </select>
+          </div>
+      </div>
+
+      <!-- write book content -->
+        <div class="w-full px-3">
+            <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+               {{form.book_content.label}}.
+            </label>
+                {{form.book_content}}
+        <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p>
+      </div>
+    </div>
+
+      <!-- Publisher name -->
+    <div class="flex flex-wrap -mx-3 mb-2 p-2  md:p-2">
+      <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0 ">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-city">
+          {{form.published_by.label}}.
+        </label>
+        {{form.published_by}}
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between p-5">
+      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+        Publish Now
+      </button>
+      
+    </div>
+  </form>
+</div>
+{% endblock content %}

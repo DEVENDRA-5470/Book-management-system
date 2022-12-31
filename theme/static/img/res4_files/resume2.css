@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200;300;400&family=Poppins:wght@300;300&display=swap");
+*{
+
+  font-family: "Poppins", sans-serif;
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+list-style: none;
+}
+body{
+    background: #c4c4c4;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+
+.mainbox{
+    display: flex;
+    width: 900px;
+    margin: 40px auto;
+    background:white;
+    padding: 10px;
+
+}
+
+.mainbox .leftbox{
+    width: 35%;
+    background:linear-gradient(30deg,rgb(42, 42, 223),rgb(2, 2, 56));
+}
+
+.mainbox .leftbox .res-image{
+    width: 100%;
+}
+
+.mainbox .leftbox .res-image img{
+    width: 100%;
+    display: block;
+    height: 300px;
+}
+
+.mainbox .res-title{
+    color:white;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size:15px;
+    margin-bottom: 10px;
+    letter-spacing: 4px;
+}
+
+.mainbox .leftbox .res-info{
+    color:rgb(206, 238, 248);
+}
+
+.mainbox .leftbox .res-bottom{
+    padding:20px 30px;
+}
+.mainbox .res-item{
+    padding: 20px 0;
+    border-bottom: 1px solid #0175b2;
+}
+
+.mainbox .res-item:last-child{
+    border-bottom:0px;
+}
+
+.mainbox  .leftbox  .res-name {
+ display: none;
+}
+
+.mainbox  .res-name .name{
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 5px;
+    letter-spacing: 4px;
+
+}
+
+.mainbox .leftbox  .res-name .role{
+    color: #84838b;
+}
+
+.mainbox .leftbox  .res-contact .res-info:last-child{
+    margin-top: 10px;
+}
+.mainbox .leftbox  .res-contact  .res-subtitle {
+    color: rgb(253, 253, 253);
+    margin-bottom: 2px;
+}
+
+.mainbox .leftbox  .res-skills .skills-list{
+    display: flex;
+    justify-content: space-between;
+    /* margin-bottom: 5px; */
+    color:rgb(214, 241, 165);
+    
+}
+.mainbox .leftbox  .res-skills .skills-list .skills-bar p{
+    margin-left: 17px;
+    margin-top: 5px;
+    position: relative;
+    width: 125px;
+    height: 20px;
+    background:#fff;
+    border-radius: 10px;
+
+
+}
+
+.mainbox .leftbox  .res-skills .skills-list .skills-bar p span{
+    position: absolute;
+    top: 0;
+    left: 0;
+    background:linear-gradient(30deg,rgb(41, 84, 226),rgb(0, 225, 255));
+    width: 100%;
+    height: 100%;
+    /* border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px; */
+}
+
+.mainbox .rightbox {
+    width: 65%;
+    padding: 20px 40px;
+}
+
+.mainbox .rightbox .res-name .name{
+    color: #26252d;
+    font-size: 32px;
+    text-transform: uppercase;
+}
+.mainbox .rightbox .res-name .role{
+    color: #26252d;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.mainbox .rightbox .res-item .res-title{
+    color: #26252d;
+}
+
+.mainbox .rightbox .res-data{
+    display: flex;
+}
+
+.mainbox .rightbox  .res-data  .year{
+    padding: 10px;
+    width: 40px;
+    position: relative; 
+}
+
+.mainbox .rightbox  .res-data  .content{
+    padding-left: 40px;
+    margin-bottom: 20px;
+    width:calc(100% - 115px) ;
+}
+
+.mainbox .rightbox .grad{
+
+  margin-left: 40px;
+  padding: 10px;
+}
+
+.mainbox .rightbox .grad h3{
+    padding-top: 15px;
+}
+
+
+.mainbox .rightbox  .res-data .year:before{
+    content:"";
+    position: absolute;
+    top:8px;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    background:#fff;
+    border: 1px solid #2625ed;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.mainbox .rightbox  .res-data .year:after{
+    content: "";
+    position: absolute;
+    top: 18%;
+    right: 4px;
+    width: 3px;
+    height: 100%;
+    background:#0175b2;
+
+}
+
+.mainbox .rightbox  .res-data:last-child .year:after{
+    display: none;
+}
+
+.mainbox .rightbox .res-interests .res-info{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.mainbox .rightbox .res-interests .interests .int-icon{
+ font: 38px;
+ color: #0175b2;
+ margin-bottom: 10px;
+}
+
+.symbol{
+
+    font-size: 25px;
+    color:#0175b2;
+}
+
+.explain{
+    font-size: 12px;
+}

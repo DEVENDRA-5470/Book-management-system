@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Home {% endblock title %}
+
+{% block content %}
+
+<section class="text-gray-600 body-font font-serif ">
+    <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+      <div class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center">
+        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 capitalize ">we selling the best write book 
+          <br class="hidden lg:inline-block">visti our store.
+        </h1>
+        <p class="mb-8 leading-relaxed ">Lorem ipsum dolor sit,repellendus exercitatione?enderit, hic maiores, cupiditate voluptatem inventore optio assumenda asperiores laudantium ratione fuga cum, nesciunt tempore sapiente sint voluptate in. Sed a fugiat expedita corporis, quod, doloribus accusantium unde nisi recusandae hic rerum pariatur, inventore quis quos perspiciatis quibusdam esse totam earum iste vitae dolorum maiores aliquid nemo? Ut, blanditiis nihil.</p>
+        <div class="flex justify-center flex-col md:flex-row">
+          {% if request.user.is_authenticated %}
+          <button class="ml-4 inline-flex text-gray-700 m-5 md:m-0 text-center bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg shadow-lg shadow-cyan-500/15"><a href="{% url 'addbook' %}"> Write a book</a></button>
+          {% if perms.books %}
+          <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg shadow-lg shadow-cyan-500/15"><a href=" joined group editer"> 
+            Hello {{request.user}}
+          </a></button>
+          
+          {% else %}
+          <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg shadow-lg shadow-cyan-500/15"><a href="{% url 'editor' %}"> Become a Editor</a></button>
+          {% endif %}
+          
+          {% else %}
+          <button class="inline-flex text-white  bg-indigo-500 border-0 py-2 px-4  focus:outline-none hover:bg-indigo-600 rounded text-lg capitalize ">Check now</button>
+          {% endif %}
+          {% comment %} <button class="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg shadow-lg shadow-cyan-500/15">Explore More</button> {% endcomment %}
+        </div>
+      </div>
+      <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
+        <img class="object-cover object-center rounded shadow-lg shadow-slate-500/50" alt="hero" src="{% static 'img\i.jpg' %}">
+      </div>
+    </div>
+  </section>
+
+<!--  -->
+  <section class="text-white bg-gray-900 body-font ">
+    <div class="container px-5 py-24 mx-auto">
+
+      <div class="flex flex-wrap -m-4 ">
+        <div class="p-4 md:w-1/3">
+          <div class="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
+            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="{% static 'img\b3.jpeg' %}" alt="blog">
+            <div class="p-6">
+              <h2 class="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">CATEGORY</h2>
+              <h1 class="title-font text-lg font-medium text-white mb-3">The Catalyzer</h1>
+              <p class="leading-relaxed mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, sed repudiandae. Provident numquam ipsum labore, saepe cum adipisci, tenetur quis ipsam praesentium </p>
+              <div class="flex items-center flex-wrap ">
+                <button class="text-white-400 inline-flex items-center md:mb-2 lg:mb-0 bg-gray-900  px-6 py-2 border rounded hover:border-red-400 shadow shadow-gray-900 duration-500">Read</button>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  -->
+        <div class="p-4 md:w-1/3">
+          <div class="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
+            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="{% static 'img\b4.jpeg' %}" alt="blog">
+            <div class="p-6">
+              <h2 class="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">CATEGORY</h2>
+              <h1 class="title-font text-lg font-medium text-white mb-3">The 400 Blows</h1>
+              <p class="leading-relaxed mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, sed repudiandae. Provident numquam ipsum labore, saepe cum adipisci, tenetur quis ipsam praesentium </p>
+              <div class="flex items-center flex-wrap">
+                <button class="text-white-400 inline-flex items-center md:mb-2 lg:mb-0 bg-gray-900  px-6 py-2 border rounded hover:border-red-400 shadow shadow-gray-900 duration-500">Read</button>
+
+
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--  -->
+        <div class="p-4 md:w-1/3">
+          <div class="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
+            <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="{% static 'img\b8.jpeg' %}" alt="blog">
+            <div class="p-6">
+              <h2 class="tracking-widest text-xs title-font font-medium text-gray-500 mb-1">CATEGORY</h2>
+              <h1 class="title-font text-lg font-medium text-white mb-3">Shooting Stars</h1>
+              <p class="leading-relaxed mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, sed repudiandae. Provident numquam ipsum labore, saepe cum adipisci, tenetur quis ipsam praesentium </p>
+              <div class="flex items-center flex-wrap ">
+                <button class="text-white-400 inline-flex items-center md:mb-2 lg:mb-0 bg-gray-900  px-6 py-2 border rounded hover:border-red-400 shadow shadow-gray-900 duration-500">Read</button>
+
+                
+                <!--  -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+{% endblock content %}

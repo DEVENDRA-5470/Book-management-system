@@ -1,0 +1,179 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <title>Bookspace | {% block title %}{% endblock title %}</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		
+		{% tailwind_css %}
+	
+	</head>
+<style>
+	
+	::-webkit-scrollbar {
+	  width: 2px;
+	  height: 10px;
+	  background: rgb(204, 229, 240); 
+	
+	}
+	::-webkit-scrollbar-thumb:hover{
+		background: rgb(2, 50, 90);
+	}
+
+	::-webkit-scrollbar-thumb {
+	  width: 2px;
+	  border-radius: 12px;
+	  background: rgb(6, 44, 61); 
+	  
+	}
+		
+		
+</style>
+<body class="bg-gray-50">
+		<!--navbar  -->
+	<nav class="bg-slate-800 font-serif p-5 md:flex md:items-center md:justify-between shadow-lg shadow-cyan-500/15 sticky top-0 ">
+		<div class="flex justify-between items-center">
+			<div class="flex items-center">
+				<img src="{% static 'img\book-removebg-preview.png' %}"  width="40px" alt="">	
+				<span class="text-white text-xl  hover:text-blue-400">Bookspace.IN</span>
+			</div>
+			<span class="text-white text-3xl cursor-pointer md:hidden block ">
+				<ion-icon name="menu-outline"id="menu" ></ion-icon>
+			</span>
+		</div>	
+
+				
+				<ul id="menubar" class=" m-5 md:m-0  md:flex md:items-center z-[1]  md:z-auto md:static absolute  w-full left-0 md:w-auto  md:opacity-100 opacity-100 top-[-400px] transition-all ease-in duration-500 p-5 md:p-0">
+				{% if perms.books %}
+				<li class=" cursor-pointer mx-4 my-6  md:my-0"><a class=" capitalize px-3 p-2 border border-gray-400 hover:bg-sky-900  text-white rounded duration-500 " href="{% url 'home' %}">home</a></li>
+				<li class=" cursor-pointer mx-4 my-6  md:my-0"><a class=" capitalize px-3 p-2 border border-gray-400 hover:bg-sky-900  text-green-500 rounded duration-500 " href="{% url 'allbook' %}">Books</a></li>
+				
+				{% else %}
+				{% endif %}
+				{% if request.user.is_authenticated %}
+				 <!-- <li class=" cursor-pointer mx-4 my-6  md:my-0"><a class=" capitalize px-3 p-2 border border-gray-400 hover:bg-sky-900  text-green-500 rounded duration-500 " href="{% url 'home' %}">{{request.user}}</a></li>  -->
+				<li class=" cursor-pointer mx-4 my-6  md:my-0"><a class=" font-semibold hover:border-red-500 capitalize px-3 p-2 border border-white  text-red-500 rounded duration-500 " href="{% url 'logout' %}">Log out</a></li>
+				
+				{% else %}
+				<li class=" cursor-pointer mx-4 my-6  md:my-0"><a class=" capitalize px-3 p-2 border border-gray-400 hover:bg-sky-900  text-white rounded duration-500 " href="{% url 'home' %}">home</a></li>
+				<li class=" cursor-pointer mx-4 my-6  md:my-0"><a class=" capitalize px-3 p-2 border border-gray-400 hover:bg-sky-900  text-white rounded duration-500" href="{% url 'signup1' %}">sign up</a></li>
+				<li class=" cursor-pointer mx-4 my-6  md:my-0"><a class=" capitalize px-3 p-2 border border-gray-400 hover:bg-sky-900  text-white rounded duration-500" href="{% url 'login' %}">sign in</a></li>
+				{% endif %}
+				<li class=" cursor-pointer mx-4 my-6  md:my-0"><a class=" capitalize px-3 p-2 border border-gray-400 hover:bg-sky-900  text-white rounded duration-500" href="{% url 'features' %}">Features</a></li>
+				{% if request.user.is_authenticated %}
+				<button  class="capitalize bg-rose-600 px-6 py-2  text-white duration-500 hover:bg-red-600 rounded font-[poppins]">Hi,{{request.user}}</button>
+				
+				{% else %}
+				<button  class="capitalize bg-rose-600 px-6 py-2  text-white duration-500 hover:bg-gradient-to-r from-green-400 to-blue-500 rounded font-[poppins]"><a href="{% url 'editor' %}">Editor</a></button>
+				{% endif %}
+			</ul>
+		
+		</div>
+	</nav>
+
+
+	{% block content %} {% endblock content %}
+
+	<footer class="text-gray-400 bg-gray-900 body-font">
+		<div class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+		  <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left md:mt-0 mt-10">
+		 
+			  <span class="ml-3 text-xl text-white">Bookspace.In</span>
+		  
+			<p class="mt-2 text-sm text-gray-500">Lorem ipsum dolor sit amet Lorem <br>ipsum dolor sit amet.</p>
+		  </div>
+		  <div class="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
+			<div class="lg:w-1/4 md:w-1/2 w-full px-4">
+			  <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
+			  <nav class="list-none mb-10">
+				<li>
+				  <a class="text-gray-400  underline hover:text-blue-500">First Link</a>
+				</li>
+				<li>
+					<a class="text-gray-400  underline hover:text-blue-500">Second Link</a>
+				</li>
+				<li>
+				  <a class="text-gray-400  underline hover:text-blue-500">Third Link</a>
+				</li>
+				<li>
+				  <a class="text-gray-400  underline hover:text-blue-500">Fourth Link</a>
+				</li>
+			  </nav>
+			</div>
+			<div class="lg:w-1/4 md:w-1/2 w-full px-4">
+			  <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
+			  <nav class="list-none mb-10">
+				<li>
+					<a class="text-gray-400  underline hover:text-blue-500">First Link</a>
+				  </li>
+				  <li>
+					  <a class="text-gray-400  underline hover:text-blue-500">Second Link</a>
+				  </li>
+				  <li>
+					<a class="text-gray-400  underline hover:text-blue-500">Third Link</a>
+				  </li>
+				  <li>
+					<a class="text-gray-400  underline hover:text-blue-500">Fourth Link</a>
+				  </li>
+			  </nav>
+			</div>
+			<div class="lg:w-1/4 md:w-1/2 w-full px-4">
+			  <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
+			  <nav class="list-none mb-10">
+				<li>
+					<a class="text-gray-400  underline hover:text-blue-500">First Link</a>
+				  </li>
+				  <li>
+					  <a class="text-gray-400  underline hover:text-blue-500">Second Link</a>
+				  </li>
+				  <li>
+					<a class="text-gray-400  underline hover:text-blue-500">Third Link</a>
+				  </li>
+				  <li>
+					<a class="text-gray-400  underline hover:text-blue-500">Fourth Link</a>
+				  </li>
+			  </nav>
+			</div>
+			<div class="lg:w-1/4 md:w-1/2 w-full px-4">
+			  <h2 class="title-font font-medium text-white tracking-widest text-sm mb-3">CATEGORIES</h2>
+			  <nav class="list-none mb-10">
+				<li>
+					<a class="text-gray-400  underline hover:text-blue-500">First Link</a>
+				  </li>
+				  <li>
+					  <a class="text-gray-400  underline hover:text-blue-500">Second Link</a>
+				  </li>
+				  <li>
+					<a class="text-gray-400  underline hover:text-blue-500">Third Link</a>
+				  </li>
+				  <li>
+					<a class="text-gray-400  underline hover:text-blue-500">Fourth Link</a>
+				  </li>
+			  </nav>
+			</div>
+		  </div>
+		</div>
+		<div class="bg-gray-800 bg-opacity-75">
+		  <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+		   developed by Dr.developer 2022 &copy; All right reserved
+		   
+		  </div>
+		</div>
+	  </footer>
+	<!-- script links -->
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+	<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+	<script>
+		let menubtn=document.getElementById('menu')
+			menubtn.addEventListener('click',()=>{
+				let m_ul=document.getElementById('menubar')
+				m_ul.classList.toggle('top-[55px]')
+				m_ul.classList.toggle('bg-slate-800')
+		
+		})
+	</script>
+	<script src="{% static 'js/custom.js' %}"></script>
+</body>
+</html>
